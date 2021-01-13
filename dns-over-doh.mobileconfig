@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+	<dict>
+		<key>PayloadContent</key>
+		<array>
+			<dict>
+          
+            <!-- This setting defines the DNS protocol used by the server (HTTPS) and the server URL -->
+		
+				<key>DNSSettings</key>
+				<dict>
+					<key>DNSProtocol</key>
+					<string>HTTPS</string>
+					<key>ServerURL</key>
+					<string>https://dns.example.com/dns-query</string>
+				</dict>		
+           
+            <!-- Enabling OnDemand – This can be toggled on/off via Settings > VPN & Network > DNS in iOS -->
+           
+            <key>OnDemandEnabled</key>
+              <integer>1</integer>
+           
+            <!-- These rules process from top to bottom - the first rule that matches is used.  -->
+           
+            <key>OnDemandRules</key>
+              <array>
+                <!-- Disable and use DHCP provided DNS if on certain WiFi Networks -->
+                <dict>
+                  <key>InterfaceTypeMatch</key>
+                    <string>WiFi</string>
+                  <key>SSIDMatch</key>
+                    <array>
+                      <string>SSID 1</string>
+                      <string>SSID 2</string>
+                      <string>SSID 3</string>
+                      <string>SSID 4</string>
+                    </array>
+                  <key>Action</key>
+                    <string>Disconnect</string>
+                </dict>
+
+                <!-- Enable if on any other WiFi network -->
+                <dict>
+                  <key>Action</key>
+                    <string>Connect</string>
+                  <key>InterfaceTypeMatch</key>
+                    <string>WiFi</string>
+                </dict>
+
+                <!-- Enable if on cellular network -->
+                <dict>
+                  <key>Action</key>
+                    <string>Connect</string>
+                  <key>InterfaceTypeMatch</key>
+                    <string>Cellular</string>
+                </dict>
+                
+                <!-- Disable if on ethernet - uncomment if needed                
+               
+                <dict>
+                  <key>Action</key>
+                    <string>Disconnect</string>
+                  <key>InterfaceTypeMatch</key>
+                    <string>Ethernet</string>
+                </dict>
+				--> 
+				 
+                <!-- Disable if not on cellular or wifi -->
+               
+                <dict>
+                  <key>Action</key>
+                    <string>Disconnect</string>
+                </dict>
+              </array>
+          
+            <!-- End of OnDemandRules -->
+				
+				<key>Name</key>
+				<string>DNS over HTTPS</string>
+				<key>PayloadDescription</key>
+				<string>Configures your iPhone, iPad, or macOS device to use a custom DNS over HTTPS server when not connected to the specified WiFi networks.</string>
+				<key>PayloadDisplayName</key>
+				<string>DNS over HTTPS</string>
+				<key>PayloadIdentifier</key>
+				<string>com.apple.dnsSettings.managed.20c24d97-f088-4d6a-8d4a-caa7c0e6d88e</string>
+				<key>PayloadType</key>
+				<string>com.apple.dnsSettings.managed</string>
+				<key>PayloadUUID</key>
+				<string>91bcb370-6de7-4a2b-8372-f281feaca367</string>
+				<key>PayloadVersion</key>
+				<integer>1</integer>
+			</dict>
+		</array>
+		<key>PayloadDescription</key>
+		<string>Configures your iPhone, iPad, or macOS device to use a custom DNS over HTTPS server when not connected to the specified WiFi networks.</string>
+		<key>PayloadDisplayName</key>
+		<string>DNS over HTTPS</string>
+		<key>PayloadIdentifier</key>
+		<string>528ae278-d16f-40aa-ae6e-04aa0ae057a2</string>
+		<key>PayloadRemovalDisallowed</key>
+		<false/>
+		<key>PayloadType</key>
+		<string>Configuration</string>
+		<key>PayloadUUID</key>
+		<string>4f161a9e-3eb1-4836-9395-0a8928338e47</string>
+		<key>PayloadVersion</key>
+		<integer>1</integer>
+	</dict>
+</plist>
